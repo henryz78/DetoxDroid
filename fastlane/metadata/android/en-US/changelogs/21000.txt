@@ -1,0 +1,7 @@
+### Release v2.10.0
+
+✨ New Features
+- add a Yesterday time frame to the usage stats
+
+🐛 Bug Fixes
+- let the date range picker offer the days the event log still covers
