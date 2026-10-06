@@ -11,7 +11,6 @@ import com.flx_apps.digitaldetox.features.DisableAppsFeature
 import com.flx_apps.digitaldetox.features.GrayscaleAppsFeature
 import com.flx_apps.digitaldetox.features.UsageStatsTracker
 import com.flx_apps.digitaldetox.system_integration.UsageStatsProvider
-import com.flx_apps.digitaldetox.system_integration.screenTimeMs
 import com.flx_apps.digitaldetox.util.DailyAppCounter
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock

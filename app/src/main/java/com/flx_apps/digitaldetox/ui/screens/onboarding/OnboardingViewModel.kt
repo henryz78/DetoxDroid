@@ -21,7 +21,6 @@ import com.flx_apps.digitaldetox.system_integration.DetoxDroidAccessibilityServi
 import com.flx_apps.digitaldetox.system_integration.DetoxDroidState
 import com.flx_apps.digitaldetox.system_integration.ReliabilitySettings
 import com.flx_apps.digitaldetox.system_integration.UsageStatsProvider
-import com.flx_apps.digitaldetox.system_integration.screenTimeMs
 import com.flx_apps.digitaldetox.util.BatteryOptimizationHelper
 import com.flx_apps.digitaldetox.util.DistractingAppsHeuristic
 import com.flx_apps.digitaldetox.util.DistractionCandidate
