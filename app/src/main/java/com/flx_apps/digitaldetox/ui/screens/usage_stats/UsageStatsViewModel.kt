@@ -456,9 +456,17 @@ class UsageStatsViewModel @Inject constructor(
             val start = end.minusDays(APP_TREND_DAYS - 1L)
             val byDate = repository.getAppHistorical(packageName, start, end)
                 .associateBy { it.date }
+            // days the event log covers are counted from it, Room's stored time may be inflated
+            val countedDays = UsageStatsProvider.queryDailyUsage(APP_TREND_DAYS)
+                .filter { it.second.perApp.isNotEmpty() }.toMap()
             _appTrend.value = (0 until APP_TREND_DAYS).map { offset ->
                 val date = start.plusDays(offset.toLong())
-                date to (byDate[date]?.totalTimeMs ?: 0L)
+                val counted = countedDays[date]
+                date to if (counted != null) {
+                    counted.perApp[packageName]?.screenTimeMs ?: 0L
+                } else {
+                    byDate[date]?.totalTimeMs ?: 0L
+                }
             }
         }
     }
