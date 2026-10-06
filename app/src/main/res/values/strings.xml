@@ -386,6 +386,7 @@
     <string name="usageStats_more">More</string>
     <string name="usageStats_title">App Usage</string>
     <string name="usageStats_timeframe_today">Today</string>
+    <string name="usageStats_timeframe_yesterday">Yesterday</string>
     <string name="usageStats_timeframe_last7Days">7 Days</string>
     <string name="usageStats_timeframe_last30Days">30 Days</string>
     <string name="usageStats_timeframe_last90Days">90 Days</string>

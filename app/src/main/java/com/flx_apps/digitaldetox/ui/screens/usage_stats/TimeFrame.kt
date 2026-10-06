@@ -8,6 +8,7 @@ import com.flx_apps.digitaldetox.R
  */
 enum class TimeFrame(val days: Int, val labelRes: Int) {
     TODAY(days = 1, labelRes = R.string.usageStats_timeframe_today),
+    YESTERDAY(days = 1, labelRes = R.string.usageStats_timeframe_yesterday),
     LAST_7_DAYS(days = 7, labelRes = R.string.usageStats_timeframe_last7Days),
     LAST_30_DAYS(days = 30, labelRes = R.string.usageStats_timeframe_last30Days),
     LAST_90_DAYS(days = 90, labelRes = R.string.usageStats_timeframe_last90Days),

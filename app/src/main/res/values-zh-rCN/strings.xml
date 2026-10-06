@@ -381,6 +381,7 @@
     <string name="usageStats_more">更多</string>
     <string name="usageStats_title">应用使用情况</string>
     <string name="usageStats_timeframe_today">今天</string>
+    <string name="usageStats_timeframe_yesterday">昨天</string>
     <string name="usageStats_timeframe_last7Days">7 天</string>
     <string name="usageStats_timeframe_last30Days">30 天</string>
     <string name="usageStats_timeframe_last90Days">90 天</string>

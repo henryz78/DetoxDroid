@@ -70,7 +70,7 @@ fun SummaryCardContent(
                     )
                 }
             }
-            if (timeFrame != TimeFrame.TODAY) {
+            if (timeFrame != TimeFrame.TODAY && timeFrame != TimeFrame.YESTERDAY) {
                 val days = effectiveDays.coerceAtLeast(1)
                 val dailyAvg = totalMs / days
                 Surface(

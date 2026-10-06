@@ -123,6 +123,7 @@ class UsageStatsViewModel @Inject constructor(
         val today = LocalDate.now()
         when (state.timeFrame) {
             TimeFrame.TODAY -> loadToday(today)
+            TimeFrame.YESTERDAY -> today.minusDays(1).let { loadRange(it, it, computeDeltas = false) }
             TimeFrame.CUSTOM -> loadRange(state.customStart, state.customEnd, computeDeltas = false)
             else -> loadRange(
                 start = today.minusDays(state.timeFrame.days - 1L),
