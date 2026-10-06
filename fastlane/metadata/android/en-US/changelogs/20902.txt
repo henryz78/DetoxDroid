@@ -1,0 +1,4 @@
+### Release v2.9.2
+
+🐛 Bug Fixes
+- follow each window on its own and count the total once
