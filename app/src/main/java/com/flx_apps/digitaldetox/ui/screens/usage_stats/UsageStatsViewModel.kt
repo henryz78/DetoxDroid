@@ -108,12 +108,7 @@ class UsageStatsViewModel @Inject constructor(
     private suspend fun refreshHistoryMetadata() {
         val retentionStart = LocalDate.now().minusMonths(HISTORY_RETENTION_MONTHS)
         val historyDays = repository.getHistoricalDayCount(retentionStart, LocalDate.now())
-        // the recent days can be counted from the OS event log even where Room has nothing yet,
-        // e.g. after the app's data was cleared
-        val today = LocalDate.now()
-        val earliest = minOf(
-            repository.getEarliestHistoryDate() ?: today, today.minusDays(BACKFILL_DAYS - 1L)
-        )
+        val earliest = repository.getEarliestHistoryDate()
         _uiState.update {
             it.copy(
                 availableHistoryDays = historyDays,
