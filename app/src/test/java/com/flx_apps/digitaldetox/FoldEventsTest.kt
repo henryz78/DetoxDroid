@@ -77,14 +77,48 @@ class FoldEventsTest {
     }
 
     @Test
-    fun `the screen going off closes every open window`() {
+    fun `a window closed right after the screen went off still counts`() {
         val counts = fold(
             RawEvent(resumed, "a", t0), RawEvent(screenOff, "", t0 + 10_000),
-            RawEvent(resumed, "a", t0 + 500_000)
+            RawEvent(paused, "a", t0 + 10_050)
         )
-        // off from 10 s to 500 s; the last window runs to the end of the period
-        assertEquals(10_000L + (t0 + 1_000_000 - (t0 + 500_000)), counts.timeOf("a"))
+        assertEquals(10_050L, counts.timeOf("a"))
+    }
+
+    @Test
+    fun `a window that never reported its close earns nothing when the screen goes off`() {
+        // the game was killed in the evening; it must not be credited up to the screen-off or to
+        // the end of the day
+        val counts = fold(
+            RawEvent(resumed, "game", t0), RawEvent(resumed, "a", t0 + 100_000),
+            RawEvent(paused, "a", t0 + 105_000), RawEvent(screenOff, "", t0 + 110_000),
+            RawEvent(resumed, "a", t0 + 500_000), RawEvent(paused, "a", t0 + 505_000)
+        )
+        assertEquals(0L, counts.timeOf("game"))
+        assertEquals(10_000L, counts.timeOf("a"))
         assertEquals(2, counts.launchCounts["a"])
+    }
+
+    @Test
+    fun `no time is added at the end of a period that ended with the screen off`() {
+        val counts = fold(RawEvent(resumed, "a", t0), RawEvent(screenOff, "", t0 + 10_000))
+        assertEquals(0L, counts.timeOf("a"))
+    }
+
+    @Test
+    fun `a window that resumes means the screen is on even without a screen-on event`() {
+        val counts = fold(
+            RawEvent(resumed, "a", t0), RawEvent(screenOff, "", t0 + 10_000),
+            RawEvent(resumed, "b", t0 + 50_000)
+        )
+        assertEquals(0L, counts.timeOf("a"))
+        assertEquals(1_000_000L - 50_000L, counts.timeOf("b"))
+    }
+
+    @Test
+    fun `the window in front when the screen is still on runs to the end`() {
+        val counts = fold(RawEvent(resumed, "a", t0), endMs = t0 + 30_000)
+        assertEquals(30_000L, counts.timeOf("a"))
     }
 
     @Test

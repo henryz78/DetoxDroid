@@ -142,9 +142,13 @@ object UsageStatsProvider {
      * Turns the usage-event log into [EventCounts]. Every window (activity) is followed from the
      * moment it resumes to the moment it pauses or stops, so a floating window or a pop-up that
      * opens over an app and closes again does not cost the app the time underneath. Windows of
-     * one app that overlap or touch count once, and the screen going off or a shutdown closes
-     * everything still open. A window whose close was never reported would run forever, so at
-     * the end of the period only the most recently opened one is kept, up to [endMs].
+     * one app that overlap or touch count once.
+     *
+     * A window only counts once its close is reported. Some apps never report it (a game that is
+     * killed, a browser tab), and crediting those up to the next screen-off or the end of the day
+     * adds hours that were never spent, so they are dropped, the screen going off included. The
+     * one exception is the end of the period: if the screen is still on, the most recently
+     * opened window is the one in front of the user and runs up to [endMs].
      *
      * [nonApps] (the launcher, the system UI) get no time and no launch. An app is launched when
      * it comes to the front after a different package, or after the screen was off; hopping
@@ -162,6 +166,7 @@ object UsageStatsProvider {
 
         val open = mutableMapOf<String, Window>()
         var lastPkg: String? = null
+        var screenOn = true
 
         fun close(window: Window, endTimeMs: Long) {
             if (window.packageName !in nonApps && endTimeMs > window.startMs) {
@@ -181,6 +186,7 @@ object UsageStatsProvider {
                         hourBuckets[cal.get(Calendar.HOUR_OF_DAY)]++
                     }
                     lastPkg = event.packageName
+                    screenOn = true // a window only resumes while the screen is on
                     open[event.className] = Window(event.packageName, event.timeMs)
                 }
 
@@ -188,10 +194,18 @@ object UsageStatsProvider {
                     open.remove(event.className)?.let { close(it, event.timeMs) }
                 }
 
-                // a reboot ends the sessions too: no pause is reported for the app in front
-                UsageEvents.Event.SCREEN_NON_INTERACTIVE, UsageEvents.Event.DEVICE_SHUTDOWN -> {
-                    open.values.forEach { close(it, event.timeMs) }
+                UsageEvents.Event.SCREEN_INTERACTIVE -> screenOn = true
+
+                // The app in front reports its pause around this moment, which is when it gets
+                // closed; whatever stays open is not credited.
+                UsageEvents.Event.SCREEN_NON_INTERACTIVE -> {
+                    screenOn = false
+                    lastPkg = null
+                }
+
+                UsageEvents.Event.DEVICE_SHUTDOWN -> {
                     open.clear()
+                    screenOn = false
                     lastPkg = null
                 }
 
@@ -204,7 +218,7 @@ object UsageStatsProvider {
                 }
             }
         }
-        open.values.maxByOrNull { it.startMs }?.let { close(it, endMs) }
+        if (screenOn) open.values.maxByOrNull { it.startMs }?.let { close(it, endMs) }
 
         val sessions = intervals.flatMap { (pkg, ranges) ->
             mergeRanges(ranges).map { SessionInfo(pkg, it.first, it.last, it.last - it.first) }
