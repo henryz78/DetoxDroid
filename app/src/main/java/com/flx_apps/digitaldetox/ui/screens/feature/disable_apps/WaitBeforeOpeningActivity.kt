@@ -1,5 +1,6 @@
 package com.flx_apps.digitaldetox.ui.screens.feature.disable_apps
 
+import com.flx_apps.digitaldetox.util.AppLanguage
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -50,6 +51,8 @@ import com.flx_apps.digitaldetox.util.appLabel
  * a fresh one. So does a pause, which lets the app through.
  */
 class WaitBeforeOpeningActivity : ComponentActivity() {
+    override fun attachBaseContext(base: Context) = super.attachBaseContext(AppLanguage.wrap(base))
+
     companion object {
         private const val EXTRA_PACKAGE_NAME = "packageName"
         private const val EXTRA_WAIT_MS = "waitMs"

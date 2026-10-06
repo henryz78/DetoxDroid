@@ -75,7 +75,7 @@ fun PermissionsRequiredScreen(
             }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Back",
+                    contentDescription = stringResource(id = R.string.action_back),
                     modifier = Modifier.size(24.dp)
                 )
             }
@@ -122,7 +122,7 @@ fun PermissionsRequiredScreenContent(
     ) {
         Icon(
             imageVector = Icons.Default.Info,
-            contentDescription = "Info",
+            contentDescription = null,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .size(128.dp)
@@ -212,7 +212,7 @@ fun GrantPermissionsCard(
                 Icon(
                     tint = MaterialTheme.colorScheme.primary,
                     imageVector = Icons.Default.PermDeviceInformation,
-                    contentDescription = "Info",
+                    contentDescription = null,
                     modifier = Modifier.size(32.dp)
                 )
                 Text(

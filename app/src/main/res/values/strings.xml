@@ -610,6 +610,8 @@
     <!-- region About -->
     <string name="about_summary">Make digital detox your default.</string>
     <string name="about_tile_subtitle">Settings, project info and the tip jar.</string>
+    <string name="about_language">Language</string>
+    <string name="about_language_system">System default</string>
     <string name="about_section_settings">Settings</string>
     <string name="about_section_support">Support the project</string>
     <string name="about_section_project">Project &amp; contact</string>

@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Simplified Chinese translation. Translate the intent, not the words. -->
+
+    <!-- region App & Services -->
+    <string name="app_quickSettingsTile">暂停 DetoxDroid</string>
+    <string name="app_quickSettingsTile_paused">DetoxDroid 已暂停 %d 分钟。</string>
+    <string name="app_quickSettingsTile_noPause">请在 %d 分钟后再暂停。</string>
+    <string name="app_accessibilityService_name">DetoxDroid 无障碍服务</string>
+    <string name="app_accessibilityService_description">根据你正在使用的应用，实时执行你设定的 DetoxDroid 规则。</string>
+    <string name="app_notification_active">数字排毒已开启</string>
+    <string name="app_notification_action_pause">暂停</string>
+    <string name="app_notification_action_resume">恢复</string>
+    <string name="app_notification_channelName">DetoxDroid 服务</string>
+    <string name="app_notification_channelDescription">让 DetoxDroid 在后台持续运行</string>
+    <string name="app_notification_alertChannelName">DetoxDroid 提醒</string>
+    <string name="app_notification_alertChannelDescription">在手机停止 DetoxDroid 时通知你</string>
+    <string name="app_notification_pausedUntil">暂停至 %s</string>
+    <string name="reliability_serviceDown_title">DetoxDroid 已停止</string>
+    <string name="reliability_serviceDown_message">你的手机在后台停止了 DetoxDroid。点按即可重新启动。</string>
+    <string name="reliability_keepAlive_title">保持 DetoxDroid 运行</string>
+    <string name="reliability_keepAlive_subtitle">显示常驻通知，降低系统在后台停止 DetoxDroid 的可能性。</string>
+    <string name="reliability_battery_title">允许不受限制的电池使用</string>
+    <string name="reliability_battery_subtitle">防止系统让 DetoxDroid 进入休眠。如果你的手机会频繁关闭后台应用，建议开启。</string>
+    <string name="reliability_onboarding_title">保持稳定运行</string>
+    <string name="reliability_onboarding_message">有些手机为了省电会停止后台应用，这可能会悄悄关掉 DetoxDroid。这些可选设置能帮助它持续运行。</string>
+    <!-- endregion -->
+
+    <!-- region Common Actions -->
+    <string name="action_go">前往</string>
+    <string name="action_save">保存</string>
+    <string name="action_delete">删除</string>
+    <string name="action_back">返回</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_ok">确定</string>
+    <string name="action_close">关闭</string>
+    <string name="action_grantPermission">授予权限</string>
+    <string name="action_openAppInfo">打开应用信息</string>
+    <string name="action_requestPermissions">此功能需要额外的权限。</string>
+    <string name="action_search">搜索</string>
+    <string name="action_search_close">关闭搜索</string>
+    <string name="action_filter">筛选</string>
+    <!-- endregion -->
+
+    <!-- region Common Formats -->
+    <string name="time_minutes">%d 分钟</string>
+    <string name="time_minutes_used">已用</string>
+    <string name="duration_hoursMinutes">%1$d 小时 %2$d 分钟</string>
+    <string name="duration_minutes">%d 分钟</string>
+    <string name="duration_hours_short">%d时</string>
+    <string name="duration_minutes_short">%d分</string>
+    <string name="duration_hoursCompact">%1$d时%2$d分</string>
+    <string name="duration_hoursMinutes_short">%1$d时 %2$d分</string>
+    <string name="duration_minutesSeconds_short">%1$d分 %2$d秒</string>
+    <string name="duration_seconds_short">%d秒</string>
+    <string name="distance_meters">%d 米</string>
+    <string name="distance_kilometers">%.1f 公里</string>
+    <!-- endregion -->
+
+    <!-- region Navigation -->
+    <string name="navigation_reportIssue">反馈问题</string>
+    <string name="navigation_about">关于与设置</string>
+    <string name="navigation_premium">DetoxDroid 高级版</string>
+    <!-- endregion -->
+
+    <!-- region Home -->
+    <string name="home_start">启动 DetoxDroid</string>
+    <string name="home_stop">停止 DetoxDroid</string>
+    <string name="home_state_active">运行中</string>
+    <string name="home_state_paused">暂停至 %s</string>
+    <string name="home_state_inactive">已停止</string>
+    <string name="home_screenTime_today">今日屏幕使用时间</string>
+    <string name="home_screenTime_unavailable">无法获取屏幕使用时间</string>
+    <string name="usageStats_usageAccessRequired">DetoxDroid 需要“使用情况访问权限”才能显示你的屏幕使用时间。</string>
+    <string name="permissions_restrictedSettings_hint">如果开关是灰色的，说明 DetoxDroid 不是从应用商店安装的，Android 限制了它。请先打开应用信息，点按右上角的三点菜单，选择“允许受限制的设置”。</string>
+    <string name="home_uninstall">卸载 DetoxDroid</string>
+    <string name="home_uninstall_hint">DetoxDroid 拥有较高权限，直接卸载可能会失败。点按此处先撤销这些权限。</string>
+    <string name="home_uninstall_blocked_hint">承诺密码生效期间不可用。</string>
+    <string name="home_uninstall_dialog_title">确定吗？</string>
+    <string name="home_uninstall_dialog_message">这会撤销 DetoxDroid 的权限，以便你正常卸载它。\n\n如果以后重新安装 DetoxDroid，需要再次授予这些权限。</string>
+    <string name="home_finishSetup_title">完成设置</string>
+    <string name="home_finishSetup_message">灰度已设置完毕，还差一项权限。</string>
+    <string name="home_finishSetup_message_overlay">刷屏中断和应用拦截需要“显示在其他应用上层”权限。</string>
+    <string name="home_finishSetup_action">完成</string>
+    <string name="home_batteryOptimization_title">保持 DetoxDroid 运行</string>
+    <string name="home_batteryOptimization_message">你的手机可能会在后台停止 DetoxDroid。允许它不受电池限制地运行，你的规则才能持续生效。</string>
+    <string name="home_batteryOptimization_action">允许</string>
+    <string name="home_batteryOptimization_why">为什么？</string>
+    <string name="home_batteryOptimization_dismiss">暂不</string>
+
+    <!-- the droid at the bottom of the home screen: it snores at night and catches fast tappers -->
+    <string name="home_droid_asleep">我睡着了，你也该睡了。</string>
+    <string name="home_droid_caught_message">看来你陷入了狂点图标的循环。</string>
+    <plurals name="home_droid_caught_context">
+        <item quantity="other">你在 %2$d 秒内点按了图标 %1$d 次。</item>
+    </plurals>
+    <!-- endregion -->
+
+    <!-- region App Lists & Categories -->
+    <!-- shared between the widget configurator and the app exception lists -->
+    <string name="appList_section_selected">已选应用</string>
+    <string name="appList_section_available">可选应用</string>
+    <string name="appList_selected_empty">尚未选择任何应用。</string>
+    <string name="appList_badge_system">系统</string>
+    <string name="exceptionsList_filter_userApps">用户应用</string>
+    <string name="exceptionsList_filter_systemApps">系统应用</string>
+    <string name="appCategories_video">视频</string>
+    <string name="appCategories_music">音乐</string>
+    <string name="appCategories_audio">音频</string>
+    <string name="appCategories_shopping">购物</string>
+    <string name="appCategories_travel">旅行</string>
+    <string name="appCategories_workout">健身</string>
+    <string name="appCategories_dating">交友</string>
+    <string name="appCategories_news">新闻</string>
+    <string name="appCategories_maps">地图</string>
+    <string name="appCategories_social">社交</string>
+    <string name="appCategories_productivity">效率</string>
+    <string name="appCategories_games">游戏</string>
+    <string name="appCategories_image">图片</string>
+    <string name="appCategories_other">其他</string>
+    <!-- endregion -->
+
+    <!-- region Shared Feature Settings -->
+    <string name="feature_settings_exceptions">应用例外</string>
+    <string name="feature_settings_exceptions_notListed">在除所选 %d 个应用之外的所有应用中生效。</string>
+    <string name="feature_settings_exceptions_onlyListed">仅在所选的 %d 个应用中生效。</string>
+    <string name="feature_settings_exceptions_empty">未找到应用。</string>
+    <string name="feature_settings_exceptions_filterByAppType">按应用类型筛选</string>
+    <string name="feature_settings_exceptions_filterByCategory">按应用分类筛选</string>
+    <string name="feature_settings_exceptions_listType">功能作用范围</string>
+    <string name="feature_settings_exceptions_listType_notList">除所选应用外的所有应用</string>
+    <string name="feature_settings_exceptions_listType_onlyList">仅所选应用</string>
+    <string name="feature_settings_exceptions_copyFrom">复制自…</string>
+    <string name="feature_settings_exceptions_copyFrom_dialogTitle">从其他功能复制所选应用</string>
+    <string name="feature_settings_exceptions_copyFrom_dialogHint">将另一项功能选中的应用复制过来，覆盖当前的选择。当前的选择会丢失。</string>
+    <string name="feature_settings_exceptions_copyFrom_appCount">%d 个应用</string>
+    <string name="feature_settings_advanced">高级</string>
+
+    <string name="feature_settings_schedule">功能时间表</string>
+    <string name="feature_settings_schedule_hint">%d 个时间段</string>
+    <string name="feature_settings_schedule_hint_activeAllTheTime">全天生效</string>
+    <string name="feature_settings_schedule_description">添加时间段，让此功能只在特定的日期和时段生效。</string>
+    <string name="feature_settings_schedule_everyDay">每天</string>
+    <string name="feature_settings_schedule_allDay">全天</string>
+    <string name="feature_settings_schedule_nextDay">次日</string>
+    <string name="feature_settings_schedule_weekdays">日期</string>
+    <string name="feature_settings_schedule_add">添加时间段</string>
+    <string name="feature_settings_schedule_newRule">新建时间段</string>
+    <string name="feature_settings_schedule_editRule">编辑时间段</string>
+    <string name="feature_settings_schedule_start">开始</string>
+    <string name="feature_settings_schedule_end">结束</string>
+    <string name="feature_settings_schedule_status_activeUntil">当前生效中，至 %s</string>
+    <string name="feature_settings_schedule_status_inactiveUntil">当前未生效，%s 起生效</string>
+    <!-- endregion -->
+
+    <!-- region Feature: Do Not Disturb -->
+    <string name="feature_doNotDisturb">“勿扰”模式</string>
+    <string name="feature_doNotDisturb_subtitle">让它成为你的新常态</string>
+    <string name="feature_doNotDisturb_description">DetoxDroid 运行期间自动开启勿扰模式。例外情况请在系统设置中配置。</string>
+    <string name="feature_doNotDisturb_systemSettings">系统设置</string>
+    <string name="feature_doNotDisturb_systemSettings_description">打开 Android 设置，进一步调整勿扰模式。</string>
+    <!-- endregion -->
+
+    <!-- region Feature: Grayscale -->
+    <string name="feature_grayscale">让应用变无聊</string>
+    <string name="feature_grayscale_subtitle">灰度、调暗、模糊</string>
+    <string name="feature_grayscale_description">去掉让人分心的应用的颜色。无法使用系统灰度滤镜时，会改用屏幕滤镜让它们褪色并模糊。</string>
+    <string name="feature_grayscale_allowedColorScreenTime">每日允许的彩色屏幕时间</string>
+    <string name="feature_grayscale_allowedColorScreenTime_description">这些应用每天可以保持彩色的时长。超过后，它们会变成灰色，直到明天。（DetoxDroid 必须保持运行才能统计屏幕时间。）</string>
+    <string name="feature_grayscale_extraDim">超暗模式</string>
+    <string name="feature_grayscale_extraDim_description">列表中的应用打开时，把屏幕调得比正常的最低亮度更暗。（长按可调整强度。）</string>
+    <string name="feature_grayscale_ignoreNonFullScreen">忽略非全屏元素</string>
+    <string name="feature_grayscale_ignoreNonFullScreen_description">忽略临时出现的浮层（例如音量面板或状态栏），避免它们改变颜色模式。</string>
+    <string name="feature_grayscale_exceptions_summary_notList">%d 个应用不受影响。</string>
+    <string name="feature_grayscale_exceptions_summary_onlyList">在 %d 个应用中生效。</string>
+    <string name="feature_grayscale_noEffects">请先开启灰度、超暗模式或屏幕滤镜。</string>
+    <string name="feature_grayscale_noEffects_noPermission">请先开启屏幕滤镜，或设置真正的灰度。</string>
+    <string name="feature_grayscale_systemGrayscale">灰度</string>
+    <string name="feature_grayscale_systemGrayscale_description">列表中的应用打开时，把系统颜色滤镜切换为灰度。不耗电。</string>
+    <string name="feature_grayscale_screenFilter">屏幕滤镜</string>
+    <string name="feature_grayscale_screenFilter_description">真正的灰度需要通过电脑或 Shizuku 进行一次性设置。在此之前，会用滤镜让容易分心的应用褪色并模糊。</string>
+    <string name="feature_grayscale_screenFilter_description_granted">叠加在系统灰度滤镜之上。你已经有真正的灰度了，所以只有在单靠灰度仍容易被忽视时才值得开启。</string>
+    <string name="feature_grayscale_screenFilter_intensity">滤镜强度</string>
+    <string name="feature_grayscale_screenFilter_intensity_description">效果的强弱。强度越高，文字越难阅读。</string>
+    <string name="feature_grayscale_screenFilter_effects">滤镜效果</string>
+    <string name="feature_grayscale_screenFilter_effects_description">遮罩会抽走颜色和对比度。模糊需要 Android 12 或更高版本，并且在省电模式下系统会关闭它。</string>
+    <string name="feature_grayscale_screenFilter_effects_shade">遮罩</string>
+    <string name="feature_grayscale_screenFilter_effects_blur">模糊</string>
+    <string name="feature_grayscale_screenFilter_effects_both">两者</string>
+    <string name="feature_grayscale_screenFilter_percent">%d%%</string>
+    <string name="feature_grayscale_screenFilter_summary_shade">遮罩，%d%%</string>
+    <string name="feature_grayscale_screenFilter_summary_blur">模糊，%d%%</string>
+    <string name="feature_grayscale_screenFilter_summary_both">遮罩与模糊，%d%%</string>
+    <!-- endregion -->
+
+    <!-- region Feature: Pause -->
+    <string name="feature_pause">暂停按钮</string>
+    <string name="feature_pause_subtitle">由你主动选择的休息</string>
+    <string name="feature_pause_description">暂停 DetoxDroid 几分钟，用于你真正需要用手机的时候。</string>
+    <string name="feature_pause_duration">暂停时长</string>
+    <string name="feature_pause_duration_description">暂停结束后，DetoxDroid 会自动恢复。</string>
+    <string name="feature_pause_minimumTimeBetween">两次暂停的最小间隔</string>
+    <string name="feature_pause_minimumTimeBetween_description">避免暂停悄悄变成习惯。</string>
+    <string name="feature_pause_fromAssistant">助手</string>
+    <string name="feature_pause_fromAssistant_description">把 DetoxDroid 设为默认助手应用，即可发起暂停。（通常长按主屏幕键可唤出助手。）</string>
+    <string name="feature_pause_fromHardwareButton">实体按键</string>
+    <string name="feature_pause_fromHardwareButton_description">选择一个实体按键，长按 2 秒即可暂停 DetoxDroid。</string>
+    <string name="feature_pause_fromHardwareButton_press">请按下手机上的任意实体按键</string>
+    <string name="feature_pause_fromHardwareButton_noButtonPressed">尚未按下任何按键</string>
+    <string name="feature_pause_fromHardwareButton_selected">已选按键：%s</string>
+    <string name="feature_pause_fromHardwareButton_appNotRunning">DetoxDroid 必须处于运行状态才能指定实体按键。</string>
+    <string name="feature_pause_ways">暂停方式</string>
+    <string name="feature_pause_fromQuickSettings">快捷设置</string>
+    <string name="feature_pause_fromQuickSettings_description">点按即可把暂停磁贴添加到快捷设置。</string>
+    <string name="feature_pause_fromQuickSettings_alreadyAdded">暂停磁贴已在你的快捷设置中。</string>
+    <string name="feature_pause_fromNotification">通知</string>
+    <string name="feature_pause_fromNotification_description">DetoxDroid 的通知上带有暂停按钮。</string>
+    <string name="feature_pause_fromNotification_blocked">允许通知后，DetoxDroid 的通知上就会出现暂停按钮。</string>
+    <string name="feature_pause_affectedFeatures">受影响的功能</string>
+    <string name="feature_pause_affectedFeatures_all">所有功能</string>
+    <string name="feature_pause_affectedFeatures_count">%1$d / %2$d 项功能</string>
+    <string name="feature_pause_affectedFeatures_dialogHint">选择暂停时要关闭哪些功能。未勾选的功能在暂停期间会继续运行。</string>
+    <!-- endregion -->
+
+    <!-- region Feature: Break Doom Scrolling -->
+    <string name="feature_doomScrolling">中断“无限刷屏”</string>
+    <string name="feature_doomScrolling_subtitle">当信息流永远刷不完时</string>
+    <string name="feature_doomScrolling_description">实验性功能：检测长时间的刷屏，并给你一条退出的路。</string>
+    <string name="feature_doomScrolling_timeUntilWarning">警告前的时长</string>
+    <string name="feature_doomScrolling_timeUntilWarning_description">刷屏持续多久后会弹出警告。</string>
+    <string name="feature_doomScrolling_exceptions_summary_notList">在 %d 个应用中跳过刷屏检测。</string>
+    <string name="feature_doomScrolling_exceptions_summary_onlyList">在 %d 个应用中启用刷屏检测。</string>
+    <string name="feature_doomScrolling_cooldownTime">冷却时间</string>
+    <string name="feature_doomScrolling_cooldownTime_description">刷屏中断之后，该应用（或只是引发中断的那个信息流）会被锁定这么长时间。</string>
+    <string name="feature_doomScrolling_sensitivity">检测灵敏度</string>
+    <string name="feature_doomScrolling_sensitivity_description">快速刷信息流多容易触发中断。“严格”会最早介入。无限加载的信息流始终会被检测到。</string>
+    <string name="feature_doomScrolling_sensitivity_relaxed">宽松</string>
+    <string name="feature_doomScrolling_sensitivity_balanced">均衡</string>
+    <string name="feature_doomScrolling_sensitivity_strict">严格</string>
+
+    <!-- overlay shown when a doom-scrolling session is detected -->
+    <string name="feature_doomScrolling_warning_title">醒醒！</string>
+    <string name="feature_doomScrolling_warning_message">看来你陷入了无限刷屏的循环。</string>
+    <string name="feature_doomScrolling_warning_exit">带我离开这里</string>
+    <string name="feature_doomScrolling_warning_finishFirst">我看完这一条就走</string>
+    <string name="feature_doomScrolling_warning_context_intensity">最近 %2$d 分钟里，你已经刷了大约 %1$d 屏内容。</string>
+    <string name="feature_doomScrolling_warning_context_endless">这个信息流一直在加载新内容，你已经刷了 %1$d 分钟。</string>
+    <string name="feature_doomScrolling_warning_context_probation">刚休息完又回来了。这次整个应用都会被暂停。</string>
+    <string name="feature_doomScrolling_guideOut_title">说好的就是说好的</string>
+    <string name="feature_doomScrolling_guideOut_message">希望刚才看得开心。现在送你回主屏幕。</string>
+    <string name="feature_doomScrolling_cooldown_title">仍在冷却中</string>
+    <string name="feature_doomScrolling_cooldown_message">这里的内容不会跑掉。多享受几分钟属于自己的时间吧。</string>
+    <string name="feature_doomScrolling_cooldown_context_app">%1$s 将在 %2$d 分钟后恢复。</string>
+    <string name="feature_doomScrolling_cooldown_context_surface">%1$s 中的这个信息流将在 %2$d 分钟后恢复。</string>
+    <!-- endregion -->
+
+    <!-- region Feature: Disable Apps -->
+    <string name="feature_disableApps">停用应用</string>
+    <string name="feature_disableApps_subtitle">让它们等一等，或直接锁起来</string>
+    <string name="feature_disableApps_description">让所选应用在打开前先等待；每日时间用完后，会拦截或停用它们，连同桌面入口和通知一并处理。</string>
+    <string name="feature_disableApps_deactivatedApps">已停用的应用</string>
+    <string name="feature_disableApps_manage">管理已停用的应用</string>
+    <string name="feature_disableApps_manage_defined">已列入停用列表的应用：%d 个</string>
+    <string name="feature_disableApps_allowedDailyTime">每日允许的屏幕时间</string>
+    <string name="feature_disableApps_allowedDailyTime_description">为这些应用设置每日允许的屏幕时间。超过后，它们会被停用，直到第二天。（DetoxDroid 必须保持运行才能统计屏幕时间。）</string>
+    <string name="feature_disableApps_allowedDailyTime_noLimit">不限制</string>
+    <string name="feature_disableApps_waitBeforeOpening">打开前等待</string>
+    <string name="feature_disableApps_waitBeforeOpening_description">这些应用打开前需要先等待。等待结束后，应用会立即打开，直到屏幕熄灭。</string>
+    <string name="feature_disableApps_waitBeforeOpening_off">关闭</string>
+    <string name="feature_disableApps_waitBeforeOpening_lockedRightAway">每日屏幕时间为 0 分钟时，应用会被直接锁定，因此没有可等待的内容。请先设置一定的时间，或选择不限制。</string>
+    <string name="feature_disableApps_operationMode">运行方式</string>
+    <string name="feature_disableApps_operationMode_description">选择用警告页面拦截应用，还是彻底停用它们。停用模式需要额外的权限。</string>
+    <string name="feature_disableApps_operationMode_block">拦截</string>
+    <string name="feature_disableApps_operationMode_deactivate">停用</string>
+    <string name="feature_disableApps_overlay_title">时间到！</string>
+    <string name="feature_disableApps_overlay_message">你已经用完了这个应用今天的屏幕时间。</string>
+    <string name="feature_disableApps_overlay_message2">休息一下，明天再来吧。</string>
+
+    <!-- screen that holds an app back before it opens -->
+    <string name="feature_disableApps_wait_title">稍等片刻</string>
+    <string name="feature_disableApps_wait_message">%1$s 马上就好。有足够的时间让你改变主意。</string>
+    <string name="feature_disableApps_wait_leave">算了</string>
+    <string name="feature_disableApps_wait_open">打开 %1$s</string>
+    <!-- endregion -->
+
+    <!-- region Feature: Commitment Password -->
+    <string name="feature_commitmentPassword">承诺密码</string>
+    <string name="feature_commitmentPassword_subtitle">用口令锁定设置</string>
+    <string name="feature_commitmentPassword_description">用口令保护所选的 DetoxDroid 设置，避免一时冲动修改。需要设备管理员权限。</string>
+    <string name="feature_commitmentPassword_requiresDeviceAdmin_message">授予设备管理员权限后才能启用承诺密码。</string>
+    <string name="feature_commitmentPassword_walkthrough_title">启用之前请了解</string>
+    <string name="feature_commitmentPassword_walkthrough_lock">会锁定你选择的设置</string>
+    <string name="feature_commitmentPassword_walkthrough_passphrase">修改它们需要输入你的口令</string>
+    <string name="feature_commitmentPassword_walkthrough_stop">设置锁定期间无法停止 DetoxDroid</string>
+    <string name="feature_commitmentPassword_walkthrough_attempts">连续输错 3 次，将暂停输入 5 分钟</string>
+    <string name="feature_commitmentPassword_walkthrough_recovery">忘记口令？找回需要等待 24 小时</string>
+    <string name="feature_commitmentPassword_walkthrough_next">口令会在下一步提供给你，请妥善保管。</string>
+    <string name="feature_commitmentPassword_walkthrough_proceed">我已了解</string>
+    <string name="feature_commitmentPassword_generated_title">你的口令</string>
+    <string name="feature_commitmentPassword_generated_message">请立即保存这个口令。修改受保护的设置时需要用到它。</string>
+    <string name="feature_commitmentPassword_generated_hint">继续之前，请把它写下来或存放在安全的地方。</string>
+    <string name="feature_commitmentPassword_generated_copied">口令已复制到剪贴板</string>
+    <string name="feature_commitmentPassword_generated_confirm">我已保存口令</string>
+    <string name="feature_commitmentPassword_copy">复制口令</string>
+    <string name="feature_commitmentPassword_unlock">解锁设置</string>
+    <string name="feature_commitmentPassword_unlock_description">输入口令，在本次使用期间解锁设置。</string>
+    <string name="feature_commitmentPassword_enter">输入口令</string>
+    <string name="feature_commitmentPassword_verify">验证</string>
+    <string name="feature_commitmentPassword_incorrect">口令错误</string>
+    <plurals name="feature_commitmentPassword_attemptsRemaining">
+        <item quantity="other">还可尝试 %d 次</item>
+    </plurals>
+    <string name="feature_commitmentPassword_show">显示口令</string>
+    <string name="feature_commitmentPassword_hide">隐藏口令</string>
+    <string name="feature_commitmentPassword_lockedOut">失败次数过多，请在 %s 后重试。</string>
+    <string name="feature_commitmentPassword_forgot">忘记口令？</string>
+    <string name="feature_commitmentPassword_recovery_title">找回口令</string>
+    <string name="feature_commitmentPassword_recovery_message">如果你忘记了口令，可以启动 24 小时的找回计时。计时结束后，你就可以重置口令。\n\n找回期间，设置仍保持锁定。</string>
+    <string name="feature_commitmentPassword_recovery_initiate">开始 24 小时找回</string>
+    <string name="feature_commitmentPassword_recovery_inProgress">找回进行中</string>
+    <string name="feature_commitmentPassword_recovery_timeRemaining">剩余时间：%s</string>
+    <string name="feature_commitmentPassword_recovery_ready">可以找回了</string>
+    <string name="feature_commitmentPassword_recovery_ready_message">24 小时的等待期已结束，现在可以重置口令了。</string>
+    <string name="feature_commitmentPassword_recovery_channelName">口令找回</string>
+    <string name="feature_commitmentPassword_recovery_channelDescription">关于承诺密码找回的通知</string>
+    <string name="feature_commitmentPassword_recovery_cancel">取消找回</string>
+    <string name="feature_commitmentPassword_recovery_complete">重置口令</string>
+    <string name="feature_commitmentPassword_disable_title">要关闭保护吗？</string>
+    <string name="feature_commitmentPassword_disable_enterPassword">输入口令以关闭承诺密码。</string>
+    <string name="feature_commitmentPassword_disable">关闭保护</string>
+    <string name="feature_commitmentPassword_banner_locked">设置已锁定。输入口令后才能编辑。</string>
+    <string name="feature_commitmentPassword_banner_unlocked">设置已在本次使用期间解锁。</string>
+    <string name="feature_commitmentPassword_lockAgain">重新锁定</string>
+    <string name="feature_commitmentPassword_lockedBadge">已被承诺密码锁定</string>
+    <string name="feature_commitmentPassword_selectFeatures">选择要锁定的功能</string>
+    <string name="feature_commitmentPassword_selectAll">全选</string>
+    <string name="feature_commitmentPassword_selectNone">全不选</string>
+    <string name="feature_commitmentPassword_featuresSelected">已选 %1$d / %2$d 项功能</string>
+    <string name="feature_commitmentPassword_deviceOwner_hint_title">可选：用设备所有者权限加强保护</string>
+    <string name="feature_commitmentPassword_deviceOwner_hint_subtitle">承诺密码依靠设备管理员权限工作。设备所有者权限还能阻止卸载 DetoxDroid。点按查看 ADB 命令。</string>
+    <string name="feature_commitmentPassword_stop_locked">停止功能已被承诺密码锁定。请先解锁设置。</string>
+    <string name="feature_commitmentPassword_tamper_overlay_title">暂时锁定</string>
+    <string name="feature_commitmentPassword_tamper_overlay_message_uninstall">设置锁定期间，无法卸载 DetoxDroid。</string>
+    <string name="feature_commitmentPassword_tamper_overlay_message_deviceAdmin">设置锁定期间，无法关闭 DetoxDroid 的设备管理员权限。</string>
+    <string name="feature_commitmentPassword_tamper_overlay_message_accessibility">设置锁定期间，无法关闭 DetoxDroid 的无障碍服务。</string>
+    <string name="feature_commitmentPassword_tamper_overlay_reassurance">你已回到主屏幕，保护仍然有效。</string>
+    <string name="feature_commitmentPassword_tamper_overlay_action_backHome">返回主屏幕</string>
+    <string name="feature_commitmentPassword_tamper_iconDescription">安全警告图标</string>
+    <!-- endregion -->
+
+    <!-- region Device Admin & Accessibility Warnings -->
+    <string name="deviceAdminRevoked_title">设备管理员权限已被停用</string>
+    <string name="deviceAdminRevoked_message">设备管理员权限被移除时，承诺密码正处于生效状态。这会削弱保护，可能让人得以卸载或绕过。</string>
+    <string name="deviceAdminRevoked_prompt">要继续，请原样输入下面这句话：</string>
+    <string name="deviceAdminRevoked_requiredPhrase">我正在做一个会让我后悔的短期决定</string>
+    <string name="deviceAdminRevoked_inputLabel">输入这句话</string>
+    <string name="deviceAdminRevoked_continue">我明白，继续</string>
+    <string name="deviceAdminRevoked_reenable_explanation">设备管理员权限能让你的承诺更难被绕过。重新启用它即可恢复完整保护。</string>
+    <string name="deviceAdminRevoked_disableRequestedWarning">承诺密码正在生效。关闭设备管理员权限会让 DetoxDroid 更容易被卸载或绕过。</string>
+    <string name="accessibilityDisabledWarning_title">无障碍服务已被关闭</string>
+    <string name="accessibilityDisabledWarning_message">承诺密码生效期间，DetoxDroid 无障碍服务被关闭了。请重新启用它，以确保你的承诺设置继续生效。</string>
+    <!-- endregion -->
+
+    <!-- region Minimal Launcher Widget -->
+    <string name="widget_minimalLauncher_name">DetoxDroid 启动器小组件</string>
+    <string name="widget_minimalLauncher_description">仅显示文字的启动器小组件，用于所选应用。</string>
+    <string name="widget_minimalLauncher_empty">点按此处选择应用</string>
+    <string name="widget_minimalLauncher_configure_title">配置启动器小组件</string>
+    <string name="widget_minimalLauncher_available_emptyFiltered">没有符合筛选条件的应用。</string>
+    <string name="widget_minimalLauncher_search_clear">清除搜索</string>
+    <string name="widget_minimalLauncher_filter_category_empty">没有可用的分类</string>
+    <string name="widget_minimalLauncher_label_display">显示名称</string>
+    <string name="widget_minimalLauncher_label_display_hint">留空则使用应用原名。</string>
+    <string name="widget_minimalLauncher_label_original">原名：%1$s</string>
+    <string name="widget_minimalLauncher_label_edit">编辑名称</string>
+    <string name="widget_minimalLauncher_reorder_drag">拖动以调整顺序</string>
+    <string name="widget_minimalLauncher_app_unavailable">此应用已不可用。</string>
+    <!-- endregion -->
+
+    <!-- region Usage Stats -->
+    <string name="usageStats_more">更多</string>
+    <string name="usageStats_title">应用使用情况</string>
+    <string name="usageStats_timeframe_today">今天</string>
+    <string name="usageStats_timeframe_last7Days">7 天</string>
+    <string name="usageStats_timeframe_last30Days">30 天</string>
+    <string name="usageStats_timeframe_last90Days">90 天</string>
+    <string name="usageStats_timeframe_custom">自定义</string>
+    <string name="usageStats_timeframe_custom_title">选择日期范围</string>
+    <string name="usageStats_timeframe_custom_start">开始日期</string>
+    <string name="usageStats_timeframe_custom_end">结束日期</string>
+    <string name="usageStats_timeframe_custom_apply">确定</string>
+    <string name="usageStats_timeframe_custom_inputFormat">yyyy-M-d</string>
+    <string name="usageStats_timeframe_custom_switchToCalendar">切换为日历选择</string>
+    <string name="usageStats_timeframe_custom_switchToInput">切换为文字输入</string>
+    <string name="usageStats_improvesOverTime">DetoxDroid 运行得越久，统计越准确。刷屏数据只在它运行期间才会记录。</string>
+    <string name="usageStats_dailyAverage">日均：%s</string>
+    <string name="usageStats_dailyAverage_short">日均</string>
+    <string name="usageStats_vsYesterday">较昨天</string>
+    <string name="usageStats_vsPreviousPeriod">较上一周期</string>
+    <string name="usageStats_topApps">使用最多的应用</string>
+    <string name="usageStats_timeOfDay">按小时统计的应用打开次数</string>
+    <string name="usageStats_byDay">按天统计</string>
+    <string name="usageStats_weekdayAverages">按星期统计的平均值</string>
+    <string name="usageStats_detoxImpact">排毒成效</string>
+    <string name="usageStats_badge_grayscale">灰度</string>
+    <string name="usageStats_badge_disabled">已停用</string>
+    <string name="usageStats_badge_doomScroll">刷屏守卫</string>
+    <string name="usageStats_grayscaleTime">灰度时长</string>
+    <string name="usageStats_colorRemaining">剩余彩色时间</string>
+    <string name="usageStats_scrollBreaks">刷屏中断</string>
+    <string name="usageStats_blocks">已拦截</string>
+    <string name="usageStats_launches">打开 %d 次</string>
+    <string name="usageStats_opens_short">打开次数</string>
+    <string name="usageStats_sessions_short">使用次数</string>
+    <string name="usageStats_avgSession">平均每次时长</string>
+    <string name="usageStats_unlocks_short">解锁次数</string>
+    <string name="usageStats_other">其他</string>
+    <string name="usageStats_appDetails">详情</string>
+    <string name="usageStats_quickActions">快捷操作</string>
+    <string name="usageStats_noActiveFeatures">没有可管理的内容，当前没有启用任何功能</string>
+    <string name="usageStats_addGrayscale">加入灰度</string>
+    <string name="usageStats_removeGrayscale">移出灰度</string>
+    <string name="usageStats_addScrollGuard">加入刷屏守卫</string>
+    <string name="usageStats_removeScrollGuard">移出刷屏守卫</string>
+    <string name="usageStats_disableApp">停用应用</string>
+    <string name="usageStats_enableApp">启用应用</string>
+    <string name="usageStats_noData">此时段没有数据</string>
+    <string name="usageStats_screenTime">屏幕使用时间</string>
+    <string name="usageStats_trend7d">7 天趋势</string>
+    <string name="usageStats_screenUnlocks">屏幕解锁</string>
+    <string name="usageStats_appCategories">应用分类</string>
+    <string name="usageStats_category_other">其他</string>
+    <string name="usageStats_scrollIntensity">刷屏强度</string>
+    <string name="usageStats_scrollIntensity_subtitle">综合滑动量和滑动速度</string>
+    <string name="usageStats_scrollIntensity_score">刷屏强度</string>
+    <string name="usageStats_scrollIntensity_detail">%1$d 次滑动 · %2$.1f 次/分钟</string>
+    <string name="usageStats_scrollIntensity_info">综合滑动总次数和每分钟的滑动频率（采用平方根加权），这样短暂的爆发不会盖过持续的无限刷屏。数值越高，刷屏越严重。</string>
+    <string name="usageStats_showMore">显示更多</string>
+    <string name="usageStats_showLess">收起</string>
+    <string name="usageStats_sort">排序方式</string>
+    <string name="usageStats_sort_screenTime">按屏幕时间</string>
+    <string name="usageStats_sort_opens">按打开次数</string>
+    <string name="usageStats_sort_scrollIntensity">按刷屏强度</string>
+    <string name="usageStats_perspective">换个角度看</string>
+    <string name="usageStats_perspective_subtitle">同样的数字，更直观的感受</string>
+    <string name="usageStats_perspective_footer">不作评判。这样只是更容易感受到时间。</string>
+    <string name="usageStats_odometer_label">滑过的内容长度</string>
+    <string name="usageStats_odometer_comparison">≈ %1$s × %2$s</string>
+    <string name="usageStats_odometer_floors">≈ 滑动了 %1$d 层楼的高度</string>
+    <string name="usageStats_timeValue_setup">你的一小时值多少钱？</string>
+    <string name="usageStats_timeValue_hint">点按查看你的屏幕时间价值多少</string>
+    <string name="usageStats_timeValue_label">你的屏幕时间，按 %1$s 计价</string>
+    <string name="usageStats_timeValue_off">关闭</string>
+    <string name="usageStats_ratePerHour">%1$s/小时</string>
+
+    <!-- landmarks used by the "In Perspective" scroll-distance comparisons -->
+    <string name="landmark_statueOfLiberty">自由女神像</string>
+    <string name="landmark_eiffelTower">埃菲尔铁塔</string>
+    <string name="landmark_empireState">帝国大厦</string>
+    <string name="landmark_burjKhalifa">哈利法塔</string>
+    <string name="landmark_mountEverest">珠穆朗玛峰</string>
+    <string name="landmark_marathon">一场马拉松</string>
+
+    <string name="chart_tooltip_opens">%1$02d:00 · 打开 %2$d 次</string>
+    <string name="chart_tooltip_unlocks">%1$02d:00 · 解锁 %2$d 次</string>
+    <string name="chart_percent">%1$s %2$d%%</string>
+    <!-- endregion -->
+
+    <!-- region Onboarding -->
+    <string name="onboarding_action_getStarted">开始使用</string>
+    <string name="onboarding_action_next">继续</string>
+    <string name="onboarding_action_finish">启动 DetoxDroid</string>
+    <string name="onboarding_action_skipSetup">跳过设置</string>
+    <string name="onboarding_skipSetup_dialog_title">跳过设置吗？</string>
+    <string name="onboarding_skipSetup_dialog_message">不会配置任何内容。你可以稍后在各功能页面单独设置，也可以在“关于”页面重新进行这个引导。</string>
+    <string name="onboarding_skipSetup_dialog_confirm">跳过</string>
+    <string name="onboarding_progress_stepOf">第 %1$d 步，共 %2$d 步</string>
+    <string name="onboarding_welcome_title">夺回你的注意力</string>
+    <string name="onboarding_welcome_message">DetoxDroid 帮你打破无意识的手机习惯：它可以让容易分心的应用变成灰色，打断无休止的刷屏，并在每日额度用完后拦截应用。接下来的步骤会根据你实际使用手机的方式来完成设置。</string>
+    <string name="onboarding_welcome_privacy">一切都留在你的设备上。DetoxDroid 开源、无广告，不收集任何数据。</string>
+    <string name="onboarding_usageAccess_title">看看时间都去哪了</string>
+    <string name="onboarding_usageAccess_message">为了推荐需要管控的应用，以及一个你真的能坚持的每日额度，DetoxDroid 需要系统的“使用情况访问权限”。它也为你的统计提供数据。这些数据不会离开你的手机。</string>
+    <string name="onboarding_usageAccess_grant">授予使用情况访问权限</string>
+    <string name="onboarding_usageAccess_granted">已授予。现在可以为你推荐具体的应用了。</string>
+    <string name="onboarding_usageAccess_skipHint">你可以跳过这一步，那样我们会改按应用分类来判断。</string>
+    <string name="onboarding_apps_title">你容易分心的应用</string>
+    <string name="onboarding_apps_message">根据你的使用情况和应用分类，这些很可能是最耗时间的应用。如果不准，请调整选择。后面的步骤会针对仍被选中的应用生效。</string>
+    <string name="onboarding_apps_loading">正在分析你的应用使用情况…</string>
+    <string name="onboarding_apps_empty">此设备上没有找到合适的应用。你之后仍然可以为每项功能单独选择应用。</string>
+    <string name="onboarding_apps_avgUsage">%s / 天</string>
+    <plurals name="onboarding_apps_selectedCount">
+        <item quantity="other">已选 %d 个应用</item>
+    </plurals>
+    <string name="onboarding_preset_title">要多严格？</string>
+    <string name="onboarding_preset_message">选一个起点，所有细节之后都可以修改。</string>
+    <string name="onboarding_preset_gentle">温和</string>
+    <string name="onboarding_preset_gentle_description">在所选应用中用中断页面打断无休止的刷屏。</string>
+    <string name="onboarding_preset_balanced">均衡</string>
+    <string name="onboarding_preset_balanced_badge">推荐</string>
+    <string name="onboarding_preset_balanced_description">在温和的基础上，所选应用用完每日额度后会变成灰度。没有了颜色，它们的吸引力会小很多。</string>
+    <string name="onboarding_preset_strict">严格</string>
+    <string name="onboarding_preset_strict_description">在均衡的基础上，每日额度用完后直接拦截。拦截前不久灰度会先提醒你。</string>
+    <string name="onboarding_preset_budget">每日额度</string>
+    <string name="onboarding_preset_budget_description">DetoxDroid 介入之前，所选应用每天可使用的额度。</string>
+    <string name="onboarding_preset_budget_suggested">根据你最近 7 天的使用情况推荐</string>
+    <string name="onboarding_permissions_title">几项权限</string>
+    <string name="onboarding_permissions_message">你的设置需要下面这些权限。想授予哪些都可以，其余的稍后可以在各功能页面补上。</string>
+    <string name="onboarding_permissions_overlay">显示在其他应用上层</string>
+    <string name="onboarding_permissions_overlay_description">用于显示中断页面和拦截应用。</string>
+    <string name="onboarding_permissions_notifications">通知</string>
+    <string name="onboarding_permissions_notifications_description">排毒功能运行期间的状态和提醒。</string>
+    <string name="onboarding_permissions_secureSettings">灰度权限</string>
+    <string name="onboarding_permissions_secureSettings_description">一项特殊权限，让 DetoxDroid 能控制系统的颜色滤镜。</string>
+    <string name="onboarding_permissions_secureSettings_oneTap">点按即可授予。在你的设备上检测到了 Shizuku 或 root。</string>
+    <string name="onboarding_permissions_secureSettings_later">点按进入引导设置。也可以先不管，我们会在主屏幕提醒你。</string>
+    <string name="onboarding_permissions_accessibility">无障碍服务</string>
+    <string name="onboarding_permissions_accessibility_description">DetoxDroid 的引擎：无障碍服务用来识别当前处于前台的应用并执行你的规则。不会有任何数据离开你的设备。</string>
+    <string name="onboarding_permissions_accessibility_auto">点按即可自动启用。</string>
+    <string name="onboarding_permissions_accessibility_manual">点按打开无障碍设置，并在其中启用 DetoxDroid。</string>
+    <string name="onboarding_permissions_state_granted">已授予</string>
+    <string name="onboarding_done_title">一切就绪</string>
+    <string name="onboarding_done_message">DetoxDroid 已配置完成。应用列表、时间表和额度仍可在主屏幕中修改。</string>
+    <plurals name="onboarding_done_summary_scrollBreaks">
+        <item quantity="other">在 %d 个应用中启用刷屏中断</item>
+    </plurals>
+    <string name="onboarding_done_summary_scrollBreaksPending">刷屏中断已就绪，但需要“显示在其他应用上层”权限才能出现。</string>
+    <string name="onboarding_done_summary_grayscale">每日使用达到 %s 后变为灰度</string>
+    <string name="onboarding_done_summary_grayscaleFilter">每日使用达到 %s 后，让人分心的应用会变得暗淡模糊。真正的灰度需要进行一次性设置。</string>
+    <string name="onboarding_done_summary_blocking">每日使用达到 %s 后拦截应用</string>
+    <string name="onboarding_done_summary_blockingPending">应用拦截已就绪，但需要“显示在其他应用上层”权限才能生效。</string>
+    <string name="onboarding_done_summary_accessibilityPending">DetoxDroid 的无障碍服务尚未启用。你可以在主屏幕启动它。</string>
+    <string name="onboarding_done_summary_nothing">没有选择任何应用，因此没有配置任何内容。请在主屏幕上探索各项功能。</string>
+    <string name="onboarding_done_summary_rerunHint">完成后，受影响功能的应用列表和每日额度将被这次的选择替换。</string>
+    <string name="onboarding_done_summary_permissionsHint">授予缺少的权限即可启用这些功能。稍后再授予也可以，我们会在主屏幕提醒你。</string>
+    <!-- endregion -->
+
+    <!-- region Shizuku Setup Wizard -->
+    <string name="shizukuSetup_title">设置灰度</string>
+    <string name="shizukuSetup_intro">灰度需要一项特殊权限，只需授予一次。没有电脑时，最简单的办法是使用 Shizuku，一款免费的辅助应用。大约需要五分钟，而且该权限在重启后依然有效。</string>
+    <string name="shizukuSetup_rooted">你的设备似乎已 root。可以跳过 Shizuku，直接授予权限。</string>
+    <string name="shizukuSetup_rooted_go">通过 root 授予</string>
+    <string name="shizukuSetup_step1_title">安装 Shizuku</string>
+    <string name="shizukuSetup_step1_description">从 Google Play 获取免费的 Shizuku 应用。</string>
+    <string name="shizukuSetup_step1_go">打开应用商店</string>
+    <string name="shizukuSetup_step2_title">启动 Shizuku 服务</string>
+    <string name="shizukuSetup_step2_description">打开 Shizuku，按照“通过无线调试启动”的提示操作。如果还没有开启开发者选项：在手机设置中找到“版本号”（通常在“关于手机”下），连续点按七次，然后在开发者选项中开启“无线调试”。Shizuku 会引导你完成配对。</string>
+    <string name="shizukuSetup_step2_openShizuku">打开 Shizuku</string>
+    <string name="shizukuSetup_step2_openDeveloperSettings">开发者选项</string>
+    <string name="shizukuSetup_step2_rebootHint">每次重启后都需要重新启动 Shizuku，但它授予的权限会保留。</string>
+    <string name="shizukuSetup_step3_title">允许 DetoxDroid 使用 Shizuku</string>
+    <string name="shizukuSetup_step3_description">Shizuku 会弹出对话框请你确认。</string>
+    <string name="shizukuSetup_step3_go">请求授权</string>
+    <string name="shizukuSetup_step4_title">授予灰度权限</string>
+    <string name="shizukuSetup_step4_description">点按一下，DetoxDroid 就会通过 Shizuku 授予自己颜色滤镜权限。</string>
+    <string name="shizukuSetup_step4_go">授予权限</string>
+    <string name="shizukuSetup_completed_title">全部完成！</string>
+    <string name="shizukuSetup_completed_message">权限已授予，灰度已就绪。如果你在设置过程中已开启灰度，现在它已经生效。</string>
+    <string name="shizukuSetup_completed_done">完成</string>
+    <!-- endregion -->
+
+    <!-- region Elevated Permissions -->
+    <string name="noPermissions">需要权限</string>
+    <string name="noPermissions_text">要使用此功能，请在装有 ADB 的电脑上授予较高权限：</string>
+    <string name="noPermissions_text_command">adb shell \"%s\"</string>
+    <string name="noPermissions_text_visitGitHub">设置步骤请见 <annotation type="GITHUB">GitHub</annotation>。</string>
+    <string name="noPermissions_text_rooted">你的设备似乎已 root。可以尝试通过 root 授予权限。</string>
+    <string name="noPermissions_text_rooted_go">通过 root 授予</string>
+    <string name="noPermissions_text_shizuku">检测到 Shizuku，可以尝试用它授予权限。</string>
+    <string name="noPermissions_text_shizuku_go">通过 Shizuku 授予</string>
+    <string name="noPermissions_text_shizukuWizard">手边没有电脑？可以直接在这部手机上一步步设置 Shizuku。</string>
+    <string name="noPermissions_text_shizukuWizard_go">引导设置</string>
+    <!-- endregion -->
+
+    <!-- region Premium -->
+    <string name="premium_tile_subtitle">支持项目，解锁进阶功能</string>
+    <!-- Sheet headline adapts to what opened it -->
+    <string name="premium_sheet_title_generic">支持 DetoxDroid</string>
+    <string name="premium_sheet_title_nudge">DetoxDroid 对你帮助很大吗？</string>
+    <string name="premium_sheet_title_locked">解锁%1$s</string>
+    <string name="premium_sheet_subtitle">免费、开源、无广告，由一个人维护。</string>
+    <!-- Personal impact card ("reciprocity beats feature lists") -->
+    <string name="premium_impact_title">你目前的排毒成果</string>
+    <string name="premium_impact_interventions">DetoxDroid 出手干预</string>
+    <string name="premium_impact_grayscale">处于灰度的时间</string>
+    <string name="premium_impact_days">天的统计数据</string>
+    <string name="premium_impact_count">%d 次</string>
+    <string name="premium_extras_title">不到一杯咖啡的价钱，只需一次</string>
+    <string name="premium_extras_body">进阶功能需要一次性打赏来解锁。如果手头紧，也可以在下方免费解锁，完全没关系。</string>
+    <string name="premium_unlocked_title">高级版已解锁</string>
+    <string name="premium_unlocked_subtitle">感谢你对 DetoxDroid 的支持 💚</string>
+    <string name="premium_unlocked_body">所有进阶功能均已开启。如果 DetoxDroid 一直值得留在你的手机上，打赏入口就在下方。</string>
+    <string name="premium_action_donatedUnlock">我已打赏</string>
+    <string name="premium_action_freeUnlock">不打赏直接解锁</string>
+    <string name="premium_action_relock">重置</string>
+    <string name="premium_action_done">完成</string>
+    <string name="premium_locked_footer">这个锁只是一个提醒，仅此而已。没有追踪，没有附加条件。</string>
+    <string name="premium_feature_usageHistory">更长的使用历史</string>
+    <string name="premium_chip_lockedLabel">高级版</string>
+    <!-- endregion -->
+
+    <!-- region About -->
+    <string name="about_summary">让数字排毒成为你的默认状态。</string>
+    <string name="about_tile_subtitle">设置、项目信息和打赏。</string>
+    <string name="about_language">语言</string>
+    <string name="about_language_system">跟随系统</string>
+    <string name="about_section_settings">设置</string>
+    <string name="about_section_support">支持本项目</string>
+    <string name="about_section_project">项目与联系方式</string>
+    <string name="about_version">版本 %1$s</string>
+    <!-- toasts while the version line is tapped, like the build number in Android's settings -->
+    <plurals name="about_version_tapsLeft">
+        <item quantity="other">再点 %d 下，你就该放下手机了。</item>
+    </plurals>
+    <string name="about_version_putItDown">现在，放下手机吧。</string>
+    <string name="about_coffee">请我喝杯咖啡</string>
+    <string name="about_coffee_subtitle">每一杯咖啡都在帮助 DetoxDroid 变得更好。</string>
+    <string name="about_patron">成为赞助者</string>
+    <string name="about_patron_subtitle">小额的按月赞助，比一次性打赏帮助更大。</string>
+    <string name="about_bitcoin">发送比特币</string>
+    <string name="about_bitcoin_subtitle">直接打到我的钱包。网络手续费使其更适合较大的金额 ;)</string>
+    <string name="about_bitcoin_message">请用你的比特币钱包向这个地址发送任意金额。</string>
+    <string name="about_bitcoin_copy">复制地址</string>
+    <string name="about_bitcoin_copied">地址已复制</string>
+    <string name="about_bitcoin_openWallet">打开钱包</string>
+    <string name="about_bitcoin_noWallet">这部手机上没有比特币钱包。请改为复制地址。</string>
+    <string name="about_contact">联系我</string>
+    <string name="about_contact_subtitle">欢迎提出功能需求和想法。我会阅读每一条，但不一定都回复。</string>
+    <string name="about_github">在 GitHub 上参与贡献</string>
+    <string name="about_onboarding">重新设置 DetoxDroid</string>
+    <string name="about_onboarding_subtitle">重新体验欢迎引导和预设方案</string>
+    <string name="about_onboarding_locked_subtitle">这会替换你已锁定的设置。请先解锁它们。</string>
+    <string name="about_debugLog">调试日志</string>
+    <string name="about_debugLog_subtitle">记录 DetoxDroid 的行为，用于提交问题反馈。仅保存在这部手机上，关闭后会被删除。</string>
+    <string name="about_debugLog_open">打开调试日志</string>
+    <!-- endregion -->
+
+    <!-- region Debug log -->
+    <string name="debugLog_title">调试日志</string>
+    <plurals name="debugLog_entries">
+        <item quantity="other">%1$s 条记录</item>
+    </plurals>
+    <plurals name="debugLog_entriesShown">
+        <item quantity="other">%1$s / %2$s 条记录</item>
+    </plurals>
+    <string name="debugLog_level_all">全部</string>
+    <string name="debugLog_level_info">信息</string>
+    <string name="debugLog_level_warnings">警告</string>
+    <string name="debugLog_level_errors">错误</string>
+    <string name="debugLog_tag_remove">显示所有标签</string>
+    <string name="debugLog_share">分享日志</string>
+    <string name="debugLog_clear">清空日志</string>
+    <string name="debugLog_clear_title">清空调试日志吗？</string>
+    <string name="debugLog_clear_message">到目前为止记录的所有内容都会被删除。只要日志保持开启，新的记录会继续写入。</string>
+    <string name="debugLog_clear_confirm">清空</string>
+    <string name="debugLog_empty_title">尚无记录</string>
+    <string name="debugLog_empty_message">DetoxDroid 一有动作，记录就会出现在这里。</string>
+    <string name="debugLog_noMatch_title">没有匹配的记录</string>
+    <string name="debugLog_noMatch_reset">清除筛选</string>
+    <string name="debugLog_run_current">自 %1$s 起运行</string>
+    <string name="debugLog_run_past">%1$s 至 %2$s</string>
+    <plurals name="debugLog_moreLines">
+        <item quantity="other">还有 %1$d 行</item>
+    </plurals>
+    <string name="debugLog_copied">记录已复制</string>
+    <string name="debugLog_newest">跳到最新记录</string>
+    <string name="debugLog_hint">点按记录可展开，长按可复制，点按它的标签可只查看该标签。</string>
+    <!-- endregion -->
+</resources>

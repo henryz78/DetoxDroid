@@ -233,7 +233,7 @@ private fun StartStopActionButton(
                         id = R.drawable.ic_stop
                     ) else painterResource(
                         id = R.drawable.ic_start
-                    ), contentDescription = "Run/Stop DetoxDroid"
+                    ), contentDescription = null // the button's own label says it
                 )
             }
         },

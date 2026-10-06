@@ -8,7 +8,11 @@ import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,16 +27,20 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.RestartAlt
 import androidx.compose.material.icons.filled.Terminal
+import androidx.compose.material.icons.filled.Translate
 import androidx.compose.material.icons.filled.WorkspacePremium
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -45,10 +53,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.activity.compose.LocalActivity
@@ -65,6 +75,7 @@ import com.flx_apps.digitaldetox.ui.screens.nav_host.NavigationRoutes
 import com.flx_apps.digitaldetox.ui.screens.onboarding.OnboardingState
 import com.flx_apps.digitaldetox.ui.widgets.SectionHeader
 import com.flx_apps.digitaldetox.ui.widgets.SettingsGroup
+import com.flx_apps.digitaldetox.util.AppLanguage
 import com.flx_apps.digitaldetox.util.DebugLog
 import java.text.NumberFormat
 
@@ -101,6 +112,10 @@ fun AboutScreen(navViewModel: NavViewModel = NavViewModel.navViewModel()) {
     val onboardingLocked = remember(commitmentPasswordToken) { OnboardingState.isOnboardingLocked }
     var debugLog by remember { mutableStateOf(DebugLog.isEnabled) }
     val versionTaps = remember(activity) { VersionTapCountdown(activity) }
+    val context = LocalContext.current
+    var languageTag by remember { mutableStateOf(AppLanguage.current(context)) }
+    var showLanguageDialog by rememberSaveable { mutableStateOf(false) }
+    val systemLanguage = stringResource(id = R.string.about_language_system)
 
     Scaffold(
         topBar = {
@@ -166,6 +181,13 @@ fun AboutScreen(navViewModel: NavViewModel = NavViewModel.navViewModel()) {
             item {
                 SectionHeader(settingsSection)
                 SettingsGroup {
+                    LinkTile(
+                        icon = Icons.Default.Translate,
+                        title = stringResource(id = R.string.about_language),
+                        subtitle = AppLanguage.options.firstOrNull { it.first == languageTag }?.second
+                            ?: systemLanguage,
+                        onClick = { showLanguageDialog = true }
+                    )
                     SwitchTile(
                         icon = Icons.Default.Notifications,
                         title = keepAliveTitle,
@@ -185,6 +207,46 @@ fun AboutScreen(navViewModel: NavViewModel = NavViewModel.navViewModel()) {
                         subtitle = if (onboardingLocked) onboardingLockedSubtitle else onboardingSubtitle,
                         enabled = !onboardingLocked,
                         onClick = { navViewModel.openRoute(NavigationRoutes.Onboarding) }
+                    )
+                }
+
+                if (showLanguageDialog) {
+                    AlertDialog(
+                        onDismissRequest = { showLanguageDialog = false },
+                        title = { Text(stringResource(id = R.string.about_language)) },
+                        text = {
+                            Column {
+                                (listOf("" to systemLanguage) + AppLanguage.options).forEach { (tag, name) ->
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .selectable(
+                                                selected = tag == languageTag,
+                                                role = Role.RadioButton,
+                                                onClick = {
+                                                    showLanguageDialog = false
+                                                    if (tag != languageTag) {
+                                                        languageTag = tag
+                                                        activity?.let { AppLanguage.set(it, tag) }
+                                                    }
+                                                }
+                                            )
+                                            .padding(vertical = 12.dp),
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        RadioButton(selected = tag == languageTag, onClick = null)
+                                        Spacer(modifier = Modifier.width(12.dp))
+                                        Text(name)
+                                    }
+                                }
+                            }
+                        },
+                        confirmButton = {},
+                        dismissButton = {
+                            TextButton(onClick = { showLanguageDialog = false }) {
+                                Text(stringResource(id = R.string.action_cancel))
+                            }
+                        }
                     )
                 }
 

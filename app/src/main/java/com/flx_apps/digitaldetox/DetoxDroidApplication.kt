@@ -1,5 +1,6 @@
 package com.flx_apps.digitaldetox
 
+import com.flx_apps.digitaldetox.util.AppLanguage
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -50,6 +51,8 @@ class DetoxDroidApplication : Application(), Configuration.Provider {
         get() = Configuration.Builder()
             .setWorkerFactory(workerFactory)
             .build()
+
+    override fun attachBaseContext(base: Context) = super.attachBaseContext(AppLanguage.wrap(base))
 
     override fun onCreate() {
         super.onCreate()

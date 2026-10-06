@@ -72,7 +72,7 @@ fun AppDisabledOverlay() {
             Spacer(modifier = Modifier.weight(1f))
             Image(
                 painter = painterResource(id = R.drawable.ic_launcher_foreground_cropped),
-                contentDescription = "Logo",
+                contentDescription = null,
                 modifier = Modifier.size(196.dp)
             )
         }

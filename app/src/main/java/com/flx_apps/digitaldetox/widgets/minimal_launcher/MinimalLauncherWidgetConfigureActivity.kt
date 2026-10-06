@@ -1,5 +1,7 @@
 package com.flx_apps.digitaldetox.widgets.minimal_launcher
 
+import android.content.Context
+import com.flx_apps.digitaldetox.util.AppLanguage
 import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.os.Bundle
@@ -82,6 +84,8 @@ private data class SelectedAppWithInfo(
 )
 
 class MinimalLauncherWidgetConfigureActivity : ComponentActivity() {
+    override fun attachBaseContext(base: Context) = super.attachBaseContext(AppLanguage.wrap(base))
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setResult(RESULT_CANCELED)

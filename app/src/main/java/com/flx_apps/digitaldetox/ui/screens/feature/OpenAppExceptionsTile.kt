@@ -40,7 +40,7 @@ fun OpenAppExceptionsTile(
     ), trailing = {
         Icon(
             imageVector = Icons.Default.KeyboardArrowRight,
-            contentDescription = "Manage App Scope",
+            contentDescription = null,
             modifier = Modifier.size(24.dp)
         )
     }, onClick = {

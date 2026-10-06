@@ -1,5 +1,6 @@
 package com.flx_apps.digitaldetox.system_integration
 
+import com.flx_apps.digitaldetox.util.AppLanguage
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
@@ -52,6 +53,8 @@ abstract class OverlayService(private val overlayContent: OverlayContent) : Life
      */
     var runningAppPackageName: String = ""
         private set
+
+    override fun attachBaseContext(base: Context) = super.attachBaseContext(AppLanguage.wrap(base))
 
     override fun onCreate() {
         super.onCreate()

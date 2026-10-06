@@ -1,5 +1,6 @@
 package com.flx_apps.digitaldetox.ui.screens.device_admin_revoked
 
+import com.flx_apps.digitaldetox.util.AppLanguage
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -60,6 +61,8 @@ import timber.log.Timber
  * automatically if WRITE_SECURE_SETTINGS is available.
  */
 class DeviceAdminRevokedWarningActivity : ComponentActivity() {
+    override fun attachBaseContext(base: Context) = super.attachBaseContext(AppLanguage.wrap(base))
+
 
     enum class WarningReason(val value: String) {
         DEVICE_ADMIN_REVOKED("device_admin_revoked"),

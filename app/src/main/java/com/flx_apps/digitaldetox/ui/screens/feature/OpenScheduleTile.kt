@@ -43,7 +43,7 @@ fun OpenScheduleTile(
         trailing = {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowRight,
-                contentDescription = "Manage Schedule",
+                contentDescription = null,
                 modifier = Modifier.size(24.dp)
             )
         },
