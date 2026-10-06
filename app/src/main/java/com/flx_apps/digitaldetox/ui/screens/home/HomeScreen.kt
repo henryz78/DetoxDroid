@@ -434,7 +434,7 @@ fun ScreenTimeChart(navViewModel: NavViewModel = NavViewModel.navViewModel()) {
     val selectedIndex = remember { mutableStateOf(-1) }
 
     val chartStats = stats.values.sortedByDescending { it.screenTimeMs }.take(5)
-    val screenTime = stats.values.sumOf { it.screenTimeMs }
+    val screenTime = UsageStatsProvider.screenTimeTodayMs
     val colors = listOf(
         colorResource(id = R.color.pink),
         colorResource(id = R.color.orange),

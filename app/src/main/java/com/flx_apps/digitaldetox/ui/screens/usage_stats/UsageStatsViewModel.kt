@@ -136,7 +136,8 @@ class UsageStatsViewModel @Inject constructor(
         val startMs = today.atStartOfDay(zone).toInstant().toEpochMilli()
         val nowMs = System.currentTimeMillis()
 
-        val osStats = UsageStatsProvider.queryForPeriod(startMs, nowMs)
+        val period = UsageStatsProvider.queryPeriod(startMs, nowMs)
+        val osStats = period.perApp
         val events = UsageStatsProvider.queryEventCounts(startMs, nowMs)
         val sessionCounts = UsageStatsProvider.groupSessionCounts(events.sessions)
 
@@ -150,12 +151,11 @@ class UsageStatsViewModel @Inject constructor(
                 scrollDistancePx = UsageStatsTracker.scrollDistanceCounter.countFor(pkg).toLong()
             )
         }
-        val total = perApp.values.sumOf { it.totalTimeMs }
+        val total = period.totalMs
 
         val yesterdayStartMs =
             today.minusDays(1).atStartOfDay(zone).toInstant().toEpochMilli()
-        val yesterdayTotal = UsageStatsProvider.queryForPeriod(yesterdayStartMs, startMs)
-            .values.sumOf { it.screenTimeMs }
+        val yesterdayTotal = UsageStatsProvider.queryPeriod(yesterdayStartMs, startMs).totalMs
         val yesterdayUnlocks =
             UsageStatsProvider.queryEventCounts(yesterdayStartMs, startMs).unlockCount
 
