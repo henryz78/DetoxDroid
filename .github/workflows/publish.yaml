@@ -11,6 +11,9 @@ on:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
+    # pushes the version bump and tag, and creates the release
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
