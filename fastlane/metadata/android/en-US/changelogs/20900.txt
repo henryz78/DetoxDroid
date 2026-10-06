@@ -1,0 +1,4 @@
+### Release v2.9.0
+
+✨ New Features
+- add Simplified Chinese and an in-app language switcher
