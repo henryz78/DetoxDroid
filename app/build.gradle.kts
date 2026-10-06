@@ -16,8 +16,8 @@ android {
         applicationId = "com.flx_apps.digitaldetox"
         minSdk = 26
         targetSdk = 36
-        versionCode = 20903
-        versionName = "2.9.3"
+        versionCode = 20904
+        versionName = "2.9.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

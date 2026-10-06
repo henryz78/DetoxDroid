@@ -1,0 +1,4 @@
+### Release v2.9.4
+
+🐛 Bug Fixes
+- let the counted screen time win over stored history for recent days
