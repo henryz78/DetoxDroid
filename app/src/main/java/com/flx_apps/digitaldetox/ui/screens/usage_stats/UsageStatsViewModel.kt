@@ -197,11 +197,18 @@ class UsageStatsViewModel @Inject constructor(
         val today = LocalDate.now()
         val days = (end.toEpochDay() - start.toEpochDay() + 1).toInt().coerceAtLeast(1)
 
-        val rows = withBackfilledRecentDays(repository.getHistorical(start, end), start, end)
+        val eventDays = UsageStatsProvider.queryDailyUsage(BACKFILL_DAYS)
+            .filter { (date, day) -> date >= start && date <= end && day.perApp.isNotEmpty() }
+            .toMap()
+        val rows = withEventTimes(
+            repository.getHistorical(start, end), eventDays.mapValues { it.value.perApp }
+        )
 
         // per-day totals, zero-filled so the time axis has no silent gaps
+        // a counted day's total counts apps used at the same time once, like the screen did
         val totalsByDate = rows.groupBy { it.date }
-            .mapValues { (_, dayRows) -> dayRows.sumOf { it.totalTimeMs } }
+            .mapValues { (_, dayRows) -> dayRows.sumOf { it.totalTimeMs } } +
+            eventDays.mapValues { it.value.totalMs }
         val byDay = (0 until days).map { offset ->
             val date = start.plusDays(offset.toLong())
             DailyUsage(date, totalsByDate[date] ?: 0L)
@@ -286,21 +293,6 @@ class UsageStatsViewModel @Inject constructor(
         return IntArray(24) { hour -> buckets.sumOf { it.getOrElse(hour) { 0 } } }
     }
 
-    /**
-     * The screen times Room stores come from whichever version recorded them, and an older way of
-     * counting (or a backup restored from another build) can have inflated them for good. For the
-     * recent days the OS event log still covers, the freshly counted times win, so Room only
-     * supplies the counters and the days and apps the log has nothing on.
-     */
-    private fun withBackfilledRecentDays(
-        rows: List<DailyAppUsage>, start: LocalDate, end: LocalDate
-    ): List<DailyAppUsage> {
-        val eventDays = UsageStatsProvider.queryDailyUsage(BACKFILL_DAYS)
-            .filter { (date, stats) -> date >= start && date <= end && stats.isNotEmpty() }
-            .toMap()
-        return withEventTimes(rows, eventDays)
-    }
-
     private fun aggregateByPackage(
         rows: List<DailyAppUsage>,
         eventLaunchCounts: Map<String, Int>,
@@ -355,8 +347,7 @@ class UsageStatsViewModel @Inject constructor(
             return totalDelta to unlockDelta
         }
 
-        val prevTotal = UsageStatsProvider.queryForPeriod(prevStartMs, prevEndMs)
-            .values.sumOf { it.screenTimeMs }
+        val prevTotal = UsageStatsProvider.queryPeriod(prevStartMs, prevEndMs).totalMs
         val prevUnlocks = UsageStatsProvider.queryEventCounts(prevStartMs, prevEndMs).unlockCount
         return (if (prevTotal > 0) currentTotal - prevTotal else null) to
             (if (prevUnlocks > 0) currentUnlocks - prevUnlocks else null)

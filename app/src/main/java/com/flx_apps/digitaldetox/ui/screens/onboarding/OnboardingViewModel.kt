@@ -147,8 +147,8 @@ class OnboardingViewModel @Inject constructor(
     private fun buildAppRows(hasUsageAccess: Boolean): List<OnboardingAppRow> {
         val avgUsageByApp: Map<String, Long> = if (hasUsageAccess) {
             val totals = HashMap<String, Long>()
-            UsageStatsProvider.queryDailyUsage(USAGE_DAYS).forEach { (_, statsByApp) ->
-                statsByApp.forEach { (packageName, stats) ->
+            UsageStatsProvider.queryDailyUsage(USAGE_DAYS).forEach { (_, day) ->
+                day.perApp.forEach { (packageName, stats) ->
                     totals.merge(packageName, stats.screenTimeMs, Long::plus)
                 }
             }

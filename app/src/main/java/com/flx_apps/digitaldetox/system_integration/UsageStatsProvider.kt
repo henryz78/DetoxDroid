@@ -263,21 +263,32 @@ object UsageStatsProvider {
     }
 
     /**
-     * Queries the merged per-app usage for each of the last [days] calendar days (today first).
-     * Limited by the OS retention window for daily buckets.
+     * Screen time of each of the last [days] calendar days (today last), counted from one pass over
+     * the event log. A session that runs across midnight is split there, so each day gets its own
+     * part. Limited by the OS retention window of the event log; days it has nothing on are empty.
      */
-    fun queryDailyUsage(days: Int): List<Pair<LocalDate, Map<String, AppScreenTime>>> {
+    fun queryDailyUsage(days: Int): List<Pair<LocalDate, PeriodScreenTime>> {
         val zone = ZoneId.systemDefault()
-        val today = LocalDate.now()
-        return (0 until days).map { dayOffset ->
-            val date = today.minusDays(dayOffset.toLong())
-            val startMs = date.atStartOfDay(zone).toInstant().toEpochMilli()
-            // today ends now: the window in front is credited up to the end of the period
-            val endMs = minOf(
-                date.plusDays(1).atStartOfDay(zone).toInstant().toEpochMilli(),
-                System.currentTimeMillis()
+        val first = LocalDate.now().minusDays(days - 1L)
+        val sessions = queryEventCounts(
+            first.atStartOfDay(zone).toInstant().toEpochMilli(), System.currentTimeMillis()
+        ).sessions
+        return (0 until days).map { offset ->
+            val date = first.plusDays(offset.toLong())
+            val dayStart = date.atStartOfDay(zone).toInstant().toEpochMilli()
+            val dayEnd = date.plusDays(1).atStartOfDay(zone).toInstant().toEpochMilli()
+            val clipped = sessions.mapNotNull { session ->
+                val from = maxOf(session.startTimeMs, dayStart)
+                val to = minOf(session.endTimeMs, dayEnd)
+                if (to > from) SessionInfo(session.packageName, from, to, to - from) else null
+            }
+            date to PeriodScreenTime(
+                perApp = clipped.groupBy { it.packageName }.mapValues { (pkg, parts) ->
+                    AppScreenTime(pkg, parts.sumOf { it.totalTimeMs })
+                },
+                totalMs = mergeRanges(clipped.map { it.startTimeMs..it.endTimeMs })
+                    .sumOf { it.last - it.first }
             )
-            date to queryForPeriod(startMs, endMs)
         }
     }
 }
