@@ -272,7 +272,11 @@ object UsageStatsProvider {
         return (0 until days).map { dayOffset ->
             val date = today.minusDays(dayOffset.toLong())
             val startMs = date.atStartOfDay(zone).toInstant().toEpochMilli()
-            val endMs = date.plusDays(1).atStartOfDay(zone).toInstant().toEpochMilli()
+            // today ends now: the window in front is credited up to the end of the period
+            val endMs = minOf(
+                date.plusDays(1).atStartOfDay(zone).toInstant().toEpochMilli(),
+                System.currentTimeMillis()
+            )
             date to queryForPeriod(startMs, endMs)
         }
     }

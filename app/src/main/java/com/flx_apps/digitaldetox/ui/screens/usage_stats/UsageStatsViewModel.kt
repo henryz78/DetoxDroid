@@ -13,6 +13,7 @@ import com.flx_apps.digitaldetox.features.BreakDoomScrollingFeature
 import com.flx_apps.digitaldetox.features.DisableAppsFeature
 import com.flx_apps.digitaldetox.features.GrayscaleAppsFeature
 import com.flx_apps.digitaldetox.features.UsageStatsTracker
+import com.flx_apps.digitaldetox.system_integration.AppScreenTime
 import com.flx_apps.digitaldetox.system_integration.UsageStatsProvider
 import com.flx_apps.digitaldetox.util.DistancePerspective
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -286,32 +287,18 @@ class UsageStatsViewModel @Inject constructor(
     }
 
     /**
-     * Room only has rows for days DetoxDroid was tracking, while the OS keeps roughly a week of
-     * per-day usage buckets. Backfills range days missing from Room with the OS data so recent
-     * history isn't shown as empty (backfilled days carry screen time only, no counters).
+     * The screen times Room stores come from whichever version recorded them, and an older way of
+     * counting (or a backup restored from another build) can have inflated them for good. For the
+     * recent days the OS event log still covers, the freshly counted times win, so Room only
+     * supplies the counters and the days and apps the log has nothing on.
      */
     private fun withBackfilledRecentDays(
         rows: List<DailyAppUsage>, start: LocalDate, end: LocalDate
     ): List<DailyAppUsage> {
-        val daysWithData = rows.mapTo(mutableSetOf()) { it.date }
-        val backfilled = rows.toMutableList()
-        for ((date, stats) in UsageStatsProvider.queryDailyUsage(BACKFILL_DAYS)) {
-            if (date < start || date > end || date in daysWithData) continue
-            stats.mapTo(backfilled) { (pkg, stat) ->
-                DailyAppUsage(
-                    rowId = DailyAppUsage.createRowId(date, pkg),
-                    date = date,
-                    packageName = pkg,
-                    totalTimeMs = stat.screenTimeMs,
-                    sessionCount = 0,
-                    launchCount = 0,
-                    scrollCount = 0,
-                    breakCount = 0,
-                    blockCount = 0
-                )
-            }
-        }
-        return backfilled
+        val eventDays = UsageStatsProvider.queryDailyUsage(BACKFILL_DAYS)
+            .filter { (date, stats) -> date >= start && date <= end && stats.isNotEmpty() }
+            .toMap()
+        return withEventTimes(rows, eventDays)
     }
 
     private fun aggregateByPackage(
@@ -492,7 +479,38 @@ class UsageStatsViewModel @Inject constructor(
         /** Number of days (inclusive of today) shown in the per-app trend sparkline. */
         private const val APP_TREND_DAYS = 7
 
-        /** How many recent days are backfilled from OS data when Room has no rows for them. */
+        /**
+         * [rows] with the screen time of every day in [eventDays] replaced by the counted one (an
+         * app the log has no time for on that day gets none), plus rows for the apps only the log
+         * knows. Days not in [eventDays] are left alone.
+         */
+        internal fun withEventTimes(
+            rows: List<DailyAppUsage>, eventDays: Map<LocalDate, Map<String, AppScreenTime>>
+        ): List<DailyAppUsage> {
+            val known = rows.mapTo(mutableSetOf()) { it.date to it.packageName }
+            val corrected = rows.map { row ->
+                val stats = eventDays[row.date] ?: return@map row
+                row.copy(totalTimeMs = stats[row.packageName]?.screenTimeMs ?: 0L)
+            }
+            val added = eventDays.flatMap { (date, stats) ->
+                stats.filterKeys { (date to it) !in known }.map { (pkg, stat) ->
+                    DailyAppUsage(
+                        rowId = DailyAppUsage.createRowId(date, pkg),
+                        date = date,
+                        packageName = pkg,
+                        totalTimeMs = stat.screenTimeMs,
+                        sessionCount = 0,
+                        launchCount = 0,
+                        scrollCount = 0,
+                        breakCount = 0,
+                        blockCount = 0
+                    )
+                }
+            }
+            return corrected + added
+        }
+
+        /** How many recent days are counted again from the OS event log. */
         private const val BACKFILL_DAYS = 7
 
         /**
