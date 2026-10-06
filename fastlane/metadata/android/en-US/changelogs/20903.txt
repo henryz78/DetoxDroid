@@ -1,0 +1,4 @@
+### Release v2.9.3
+
+🐛 Bug Fixes
+- stop crediting windows that never reported their close
