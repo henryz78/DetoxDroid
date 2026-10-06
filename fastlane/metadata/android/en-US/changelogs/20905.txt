@@ -1,0 +1,5 @@
+### Release v2.9.5
+
+🐛 Bug Fixes
+- draw an app's seven-day trend from the counted times where the event log has them
+- count the days of a range in one pass and total each day without double counting
